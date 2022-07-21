@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 
 class User:
     def __init__(self,data):
@@ -54,3 +55,9 @@ class User:
                 '''
         return connectToMySQL('users').query_db(query,data)
 
+    @staticmethod
+    def validate(user):
+        is_valid = True
+        if len(user['first_name']) < 2:
+            flash('Name must be at least 2 characters.')
+            is_valid = False

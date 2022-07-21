@@ -9,12 +9,15 @@ def dashboard():
 
 @app.route('/new_user_form/')
 def new_user_form():
-    users = User.get_all()
+    # users = User.get_all()
     return render_template('new_user_form.html')
 
-@app.route('/save_user/')
+@app.route('/save_user/',methods=['POST'])
 def save_user():
-    pass
+    if not User.validate(request.form):
+        return redirect('/new_user_form')
+    User.save(request.form)
+    return redirect('/')
 
 # @app.route('/')
 # def xxxx():

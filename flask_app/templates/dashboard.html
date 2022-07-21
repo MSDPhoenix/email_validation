@@ -1,0 +1,50 @@
+{% extends 'new_user_form.html' %}
+
+{% block body %}
+<div id="wrapper" class="w-100xxx p-5 m-5 fs-3">
+    <div class="d-flex justify-content-between">
+        <h1 class="d-inline-block pb-5">All Users</h1>
+        <a href="/new_user_form/">+ Add a User</a>
+    </div>
+    <div></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{user.first_name}} {{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created_at}}</td>
+                    <td>
+                        <a href="">show</a> | <a href="">edit</a> | <a href="">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{#    
+    <form action="add_user" method="post">
+        <label for="first_name" class="w-25 mt-5 p-3">First Name:</label>
+        <input type="text" name="first_name" class="w-50  mt-5 p-3 border border-dark border-3">
+        <label for="last_name" class="w-25  mt-5 p-3">Last Name:</label>
+        <input type="text" name="last_name" class="w-50  mt-5 p-3 border border-dark border-3">
+        <label for="email" class="w-25  mt-5 p-3">Email</label>
+        <input type="text" name="email" class="w-50  mt-5 p-3 border border-dark border-3">
+        <input type="submit" value="Create"  class="d-block mt-5 py-3 px-5 w-25 border border-dark border-3">
+    </form>
+#}
+</div>
+
+
+
+
+
+{% endblock body %}
