@@ -10,22 +10,47 @@ class User:
         self.updated_at=data['updated_at']
 
     @classmethod
-    def xxxxx(cls,data):
-        pass
+    def get_one(cls,data):
+        query = '''
+                SELECT * FROM users WHERE id = %(id)s;
+                '''
+        results = connectToMySQL('users').query__db(query,data)
+        user = cls(results[0])
+        return user
 
     @classmethod
-    def xxxxx(cls,data):
-        pass
+    def get_all(cls):
+        query = '''
+                SELECT * FROM users;
+                '''
+        results = connectToMySQL('users').query__db(query)
+        users = []
+        for row in results:
+            users.append(cls(row))
+        return users
 
     @classmethod
-    def xxxxx(cls,data):
-        pass
+    def save(cls,data):
+        query = '''
+                INSERT INTO users (first_name,last_name,email)
+                VALUES (%(first_name)s,%(last_name)s,%(email)s)
+                WHERE id=%(id)s; 
+                '''
+        return connectToMySQL('users').query__db(query,data)
 
     @classmethod
-    def xxxxx(cls,data):
-        pass
+    def update(cls,data):
+        query = '''
+                UPDATE users
+                SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s
+                WHERE id=%(id)s; 
+                '''
+        return connectToMySQL('users').query__db(query,data)
 
     @classmethod
-    def xxxxx(cls,data):
-        pass
+    def delete(cls,data):
+        query = '''
+                DELETE FROM users WHERE id=%(id)s;
+                '''
+        return connectToMySQL('users').query__db(query,data)
 
