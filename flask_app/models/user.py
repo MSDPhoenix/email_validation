@@ -14,7 +14,7 @@ class User:
         query = '''
                 SELECT * FROM users WHERE id = %(id)s;
                 '''
-        results = connectToMySQL('users').query__db(query,data)
+        results = connectToMySQL('users').query_db(query,data)
         user = cls(results[0])
         return user
 
@@ -23,7 +23,7 @@ class User:
         query = '''
                 SELECT * FROM users;
                 '''
-        results = connectToMySQL('users').query__db(query)
+        results = connectToMySQL('users').query_db(query)
         users = []
         for row in results:
             users.append(cls(row))
@@ -36,7 +36,7 @@ class User:
                 VALUES (%(first_name)s,%(last_name)s,%(email)s)
                 WHERE id=%(id)s; 
                 '''
-        return connectToMySQL('users').query__db(query,data)
+        return connectToMySQL('users').query_db(query,data)
 
     @classmethod
     def update(cls,data):
@@ -45,12 +45,12 @@ class User:
                 SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s
                 WHERE id=%(id)s; 
                 '''
-        return connectToMySQL('users').query__db(query,data)
+        return connectToMySQL('users').query_db(query,data)
 
     @classmethod
     def delete(cls,data):
         query = '''
                 DELETE FROM users WHERE id=%(id)s;
                 '''
-        return connectToMySQL('users').query__db(query,data)
+        return connectToMySQL('users').query_db(query,data)
 
