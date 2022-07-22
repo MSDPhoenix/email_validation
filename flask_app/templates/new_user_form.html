@@ -27,11 +27,11 @@
         </div>
         <form action="/save_user/" method="post">
             <label for="first_name" class="w-25 mt-5 p-3">First Name:</label>
-            <input type="text" name="first_name" class="w-50  mt-5 p-3 border border-dark border-3">
+            <input type="text" name="first_name" value="{{session['first_name']}}" class="w-50  mt-5 p-3 border border-dark border-3">
             <label for="last_name" class="w-25  mt-5 p-3">Last Name:</label>
-            <input type="text" name="last_name" class="w-50  mt-5 p-3 border border-dark border-3">
+            <input type="text" name="last_name" value="{{session['last_name']}}" class="w-50  mt-5 p-3 border border-dark border-3">
             <label for="email" class="w-25  mt-5 p-3">Email</label>
-            <input type="text" name="email" class="w-50  mt-5 p-3 border border-dark border-3">
+            <input type="text" name="email" value="{{session['email']}}" class="w-50  mt-5 p-3 border border-dark border-3">
             <input type="submit" value="Create"  class="d-block mt-5 py-3 px-5 w-25 border border-dark border-3">
         </form>
     </div>
