@@ -15,8 +15,14 @@ def new_user_form():
 @app.route('/save_user/',methods=['POST'])
 def save_user():
     if not User.validate(request.form):
-        return redirect('/new_user_form')
+
+        session['']
+
+        return redirect('/new_user_form/')
     User.save(request.form)
+
+    # clear session
+
     return redirect('/')
 
 # @app.route('/')
